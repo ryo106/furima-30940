@@ -3,6 +3,10 @@ class Item < ApplicationRecord
   has_many :orders
   has_one_attached :image
 
+  # def was_attached?
+  #   self.image.attached?
+  # end
+
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :category
   belongs_to :product_status
