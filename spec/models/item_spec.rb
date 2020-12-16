@@ -24,26 +24,51 @@ RSpec.describe Item, type: :model do
       expect(@item.errors.full_messages).to include "Text can't be blank"
     end
     it '商品の状態が必須であること' do
+      @item.product_status_id = ''
+      @item.valid?
+      expect(@item.errors.full_messages).to include "Product status select"
+    end
+    it '商品の状態が、id:1が選択されていた場合、保存できないこと' do
       @item.product_status_id = 1  
       @item.valid?
       expect(@item.errors.full_messages).to include "Product status select"
     end
     it 'カテゴリーの情報が必須であること' do
+      @item.category_id = ''
+      @item.valid?
+      expect(@item.errors.full_messages).to include "Category select"
+    end
+    it 'カテゴリーの情報が、id:1が選択されていた場合、保存できないこと' do
       @item.category_id = 1  
       @item.valid?
       expect(@item.errors.full_messages).to include "Category select"
     end
     it '配送料の負担についての情報が必須であること' do
+      @item.shipping_fee_burden_id = ''
+      @item.valid?
+      expect(@item.errors.full_messages).to include "Shipping fee burden select"
+    end
+    it '配送料の負担についての情報が、id:1が選択されていた場合、保存できないこと' do
       @item.shipping_fee_burden_id = 1
       @item.valid?
       expect(@item.errors.full_messages).to include "Shipping fee burden select"
     end
     it '発送元の地域についての情報が必須であること' do
+      @item.prefectures_id = ''
+      @item.valid?
+      expect(@item.errors.full_messages).to include "Prefectures select"
+    end
+    it '発送元の地域についての情報が、id:1が選択されていた場合、保存できないこと' do
       @item.prefectures_id = 1
       @item.valid?
       expect(@item.errors.full_messages).to include "Prefectures select"
     end
     it '発送までの日数についての情報が必須であること' do
+      @item.delivery_days_id = ''
+      @item.valid?
+      expect(@item.errors.full_messages).to include "Delivery days select"
+    end
+    it '発送までの日数についての情報が、id:1が選択されていた場合、保存できないこと' do
       @item.delivery_days_id = 1
       @item.valid?
       expect(@item.errors.full_messages).to include "Delivery days select"
@@ -72,3 +97,5 @@ RSpec.describe Item, type: :model do
     end
   end
 end
+
+# idの1が選択されていた場合、保存できないことを確認するテストコード
