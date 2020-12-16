@@ -6,7 +6,7 @@ class User < ApplicationRecord
   with_options presence: true do
     validates :nickname
     validates :birthday
-    
+
     with_options format: { with: /\A[ぁ-んァ-ン一-龥々]/ } do
       validates :first_name
       validates :last_name
@@ -17,9 +17,8 @@ class User < ApplicationRecord
       validates :last_name_kana
     end
   end
-  validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i ,message: "Include both letters and numbers" }
- 
+  validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i, message: 'Include both letters and numbers' }
+
   has_many :items
   has_many :orders
 end
-

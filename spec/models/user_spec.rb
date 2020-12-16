@@ -5,7 +5,7 @@ RSpec.describe User, type: :model do
     @user = FactoryBot.build(:user)
   end
   describe '新規登録/ユーザー情報' do
-    it "全てのユーザー情報が正しく入力されている場合、登録できること" do
+    it '全てのユーザー情報が正しく入力されている場合、登録できること' do
       expect(@user).to be_valid
     end
     it 'nicknameが空だと登録できない' do
@@ -44,7 +44,7 @@ RSpec.describe User, type: :model do
       @user.password = 'aaaaaa'
       @user.password_confirmation = 'aaaaaa'
       @user.valid?
-      expect(@user.errors.full_messages).to include("Password Include both letters and numbers")
+      expect(@user.errors.full_messages).to include('Password Include both letters and numbers')
     end
     it '半角数字のみでは登録できないこと' do
       @user.password = '123456'
