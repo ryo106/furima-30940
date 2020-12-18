@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
+  before_action :set_tweet, only: [:edit, :show, :update]
 
   def index
     @items = Item.includes(:user).order('created_at DESC')
@@ -43,8 +44,11 @@ class ItemsController < ApplicationController
   def item_params
     params.require(:item).permit(:image, :title, :text, :category_id, :product_status_id, :shipping_fee_burden_id, :prefecture_id, :delivery_day_id, :price).merge(user_id: current_user.id)
   end
+
+  def set_tweet
+    @item = Item.find(params[:id])
+  end
 end
 
-# edit - edit.html.erb
-# update - index - index.html.erb
-# update - edit.html.erb
+
+
