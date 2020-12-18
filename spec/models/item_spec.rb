@@ -54,24 +54,24 @@ RSpec.describe Item, type: :model do
       expect(@item.errors.full_messages).to include 'Shipping fee burden select'
     end
     it '発送元の地域についての情報が必須であること' do
-      @item.prefectures_id = ''
+      @item.prefecture_id = ''
       @item.valid?
-      expect(@item.errors.full_messages).to include 'Prefectures select'
+      expect(@item.errors.full_messages).to include 'Prefecture select'
     end
     it '発送元の地域についての情報が、id:1が選択されていた場合、保存できないこと' do
-      @item.prefectures_id = 1
+      @item.prefecture_id = 1
       @item.valid?
-      expect(@item.errors.full_messages).to include 'Prefectures select'
+      expect(@item.errors.full_messages).to include 'Prefecture select'
     end
     it '発送までの日数についての情報が必須であること' do
-      @item.delivery_days_id = ''
+      @item.delivery_day_id = ''
       @item.valid?
-      expect(@item.errors.full_messages).to include 'Delivery days select'
+      expect(@item.errors.full_messages).to include 'Delivery day select'
     end
     it '発送までの日数についての情報が、id:1が選択されていた場合、保存できないこと' do
-      @item.delivery_days_id = 1
+      @item.delivery_day_id = 1
       @item.valid?
-      expect(@item.errors.full_messages).to include 'Delivery days select'
+      expect(@item.errors.full_messages).to include 'Delivery day select'
     end
     it '価格についての情報が必須であること' do
       @item.price = ''
