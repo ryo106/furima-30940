@@ -23,8 +23,8 @@ class Item < ApplicationRecord
       validates :category_id
       validates :product_status_id
       validates :shipping_fee_burden_id
-      validates :prefectures_id
-      validates :delivery_days_id
+      validates :prefecture_id
+      validates :delivery_day_id
     end
   end
 end

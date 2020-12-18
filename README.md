@@ -28,8 +28,8 @@
 | category_id            | integer    | null: false                    |
 | product_status_id      | integer    | null: false                    |
 | shipping_fee_burden_id | integer    | null: false                    |
-| prefectures_id         | integer    | null: false                    |
-| delivery_days_id       | integer    | null: false                    |
+| prefecture_id          | integer    | null: false                    |
+| delivery_day_id        | integer    | null: false                    |
 | price                  | integer    | null: false                    |
 | user                   | references | null: false, foreign_key: true |
 
@@ -58,7 +58,7 @@
 | Column               | Type      | Options                        |
 | -------------------- | --------- | ------------------------------ |
 | postal_code          | string    | null: false                    |
-| prefectures_id       | integer   | null: false                    |
+| prefecture_id       | integer   | null: false                    |
 | municipality         | string    | null: false                    |
 | address              | string    | null: false                    |
 | building_name        | string    |                                |
