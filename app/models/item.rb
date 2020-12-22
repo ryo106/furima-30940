@@ -1,11 +1,7 @@
 class Item < ApplicationRecord
   belongs_to :user
-  has_many :orders
+  has_one :order
   has_one_attached :image
-
-  # def was_attached?
-  #   self.image.attached?
-  # end
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :category
