@@ -23,11 +23,6 @@ RSpec.describe OrderAddress, type: :model do
         @order.valid?
         expect(@order.errors.full_messages).to include("Postal code can't be blank")
       end
-      it '郵便番号が数字だけでは保存できないこと' do
-        @order.postal_code = '1234567'
-        @order.valid?
-        expect(@order.errors.full_messages).to include('Postal code is invalid')
-      end
       it '郵便番号はハイフン無しでは保存できないこと' do
         @order.postal_code = '1234567'
         @order.valid?
@@ -71,12 +66,17 @@ RSpec.describe OrderAddress, type: :model do
       it '電話番号が11桁以上だと保存できないこと' do
         @order.phone_number = '090123456789'
         @order.valid?
-        expect(@order.errors.full_messages).to include('Phone number is too long (maximum is 11 characters)')
+        expect(@order.errors.full_messages).to include('Phone number number is not a number')
       end
       it '電話番号が9桁以下だと保存できないこと' do
         @order.phone_number = '090123456'
         @order.valid?
-        expect(@order.errors.full_messages).to include('Phone number is too short (minimum is 10 characters)')
+        expect(@order.errors.full_messages).to include('Phone number number is not a number')
+      end
+      it '電話番号が英数混合では保存できないこと' do
+        @order.phone_number = '12345ABCdef'
+        @order.valid?
+        expect(@order.errors.full_messages).to include('Phone number is not a number')
       end
       it 'user_idが空だと保存できないこと' do
         @order.user_id = ''
