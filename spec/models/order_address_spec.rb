@@ -39,7 +39,7 @@ RSpec.describe OrderAddress, type: :model do
         expect(@order.errors.full_messages).to include('Postal code is invalid')
       end
       it '都道府県選択が、id:1が選択されていた場合、保存できないこと' do
-        @order.prefecture_id = '1'
+        @order.prefecture_id = 1
         @order.valid?
         expect(@order.errors.full_messages).to include('Prefecture must be other than 1')
       end
