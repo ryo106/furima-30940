@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_tweet, only: [:index, :create]
+  before_action :set_item, only: [:index, :create]
   before_action :move_to_index
 
   def index
@@ -8,7 +8,6 @@ class OrdersController < ApplicationController
   end
 
   def create
-    
     @order_address = OrderAddress.new(order_params)
     if @order_address.valid?
       pay_item
@@ -21,7 +20,7 @@ class OrdersController < ApplicationController
 
   private
 
-  def set_tweet
+  def set_item
     @item = Item.find(params[:item_id])
   end
 
