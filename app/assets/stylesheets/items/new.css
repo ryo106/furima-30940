@@ -96,6 +96,9 @@
   padding: 2vh 0;
 }
 
+.image-size{
+  width: 60px;
+}
 .items-text {
   width: 100%;
   padding: 16px 16px 8px;
